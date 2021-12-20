@@ -39,10 +39,16 @@ This script deletes the current deployment from the namespace and deletes the se
   
 ## prerequisites
 1. **helm** 
-  - curl -fsSL -o /tmp/get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-  - chmod +x /tmp/get_helm.sh
-  - /tmp/get_helm.sh
+```
+  curl -fsSL -o /tmp/get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+  chmod +x /tmp/get_helm.sh
+  /tmp/get_helm.sh
+```
 2. **keytool**
-  - yum install java-1.8.0-openjdk -y
+```
+yum install java-1.8.0-openjdk -y
+```
 3. **yq**
-  - VER=4.16.1 BIN=yq_linux_amd64;wget https://github.com/mikefarah/yq/releases/download/${VER}/${BIN} -O /usr/bin/yq && chmod +x /usr/bin/yq
+```
+VER=4.16.1 BIN=yq_linux_amd64;wget https://github.com/mikefarah/yq/releases/download/${VER}/${BIN} -O /usr/bin/yq && chmod +x /usr/bin/yq
+```
