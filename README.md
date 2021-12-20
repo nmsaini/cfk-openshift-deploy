@@ -12,7 +12,9 @@ e.g.
 `
 ./create-kafka-deployment.sh confluent apps.ns.cp.fyre.ibm.com kafka-template.yaml kuser kuserPASS c3user c3userPASS
 `
-  
+
+Before running this script make sure you edit the create-kafka-certs.sh and make sure line# 3 and 4 is to your liking.
+
 This script creates the namespace, and installs the operator within the namespace. It then generates all the certificates for the components, creates the secrets and generates the deployment configuration. Apply the deployment using 
 
 `
