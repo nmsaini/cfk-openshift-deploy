@@ -37,3 +37,10 @@ This script deletes the current deployment from the namespace and deletes the se
 
 ` oc delete project <namespace>`
   
+## prerequisites
+1. helm 
+- curl -fsSL -o /tmp/get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+- chmod +x /tmp/get_helm.sh
+- /tmp/get_helm.sh
+2. keytool
+- yum install java-1.8.0-openjdk -y
