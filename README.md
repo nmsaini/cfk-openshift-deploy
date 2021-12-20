@@ -44,4 +44,5 @@ This script deletes the current deployment from the namespace and deletes the se
   - /tmp/get_helm.sh
 2. **keytool**
   - yum install java-1.8.0-openjdk -y
-
+3. **yq**
+  - VER=4.16.1 BIN=yq_linux_amd64;wget https://github.com/mikefarah/yq/releases/download/${VER}/${BIN} -O /usr/bin/yq && chmod +x /usr/bin/yq
