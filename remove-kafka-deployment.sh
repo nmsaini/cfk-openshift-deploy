@@ -48,3 +48,4 @@ do
 done
 
 rm confluent-$namespace.p12
+rm k-truststore.jks
