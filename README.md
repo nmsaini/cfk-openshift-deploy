@@ -20,8 +20,23 @@ This script creates the namespace, and installs the operator within the namespac
 `
 oc apply -f deployed-config-template.yaml
 `
-  
-  
+
+## licensed version
+Before running the `oc apply` command update your operator with your license text.
+
+`
+helm upgrade --install cfk-operator confluentinc/confluent-for-kubernetes --set licenseKey=<CFK license key>
+`
+
+After the operator is updated, use the "licensed version of the template" to generate the deployment.
+If the deployment was already generated, you can edit all the components in the yaml and add
+```
+spec:
+  license:
+    globalLicense: true
+```
+and re-apply the deployment.
+ 
 ## removing
 `
 ./remove-kafka-deployment.sh <namespace>
