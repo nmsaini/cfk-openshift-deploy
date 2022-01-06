@@ -18,7 +18,7 @@ oc delete Connect.platform.confluent.io connect
 oc delete Kafka.platform.confluent.io kafka
 oc delete Zookeeper.platform.confluent.io zookeeper
 
-helm delete operator
+helm delete cfk-operator
 
 secrets="zookeeper-listener \
     kafka-listener \
@@ -48,3 +48,4 @@ do
 done
 
 rm confluent-$namespace.p12
+rm k-truststore.jks

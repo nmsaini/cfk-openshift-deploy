@@ -40,7 +40,7 @@ fi
 
 # Install the operator
 echo Installing the operator
-helm upgrade --install operator confluentinc/confluent-for-kubernetes
+helm upgrade --install cfk-operator confluentinc/confluent-for-kubernetes
 
 # Create certificates
 if [ -z $(oc get secret kafka-tls --ignore-not-found=true |grep -q kafka-tls) ] 
@@ -51,6 +51,7 @@ fi
 # Create a PKCS12 keystore with the CA cert
 echo Creating keystore
 keytool -keystore confluent-$namespace.p12 -storetype PKCS12 -import -file ./certs/confluentCA.pem -storepass password -noprompt
+keytool -keystore k-truststore.jks -storetype jks -import -file ./certs/confluentCA.pem -storepass password -noprompt
 
 # Run the create-secrets script
 echo Creating auth secrets
