@@ -1,7 +1,7 @@
 # cfk-openshift-deploy
 
 ## deploying
-Deloy confluent-for-kubernetes deployment using the operator
+Deploy confluent-for-kubernetes deployment using the operator
 
 `
 ./create-kafka-deployment.sh <namespace> <Domain-url> <config-template.yaml> <kafka-user> <kafka-user-pass> <c3-user> <c3-user-pass>
