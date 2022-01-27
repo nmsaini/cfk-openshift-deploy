@@ -1,7 +1,7 @@
 # cfk-openshift-deploy
 
 ## deploying
-Deloy confluent-for-kubernetes deployment using the operator
+Deploy confluent-for-kubernetes deployment using the operator
 
 `
 ./create-kafka-deployment.sh <namespace> <Domain-url> <config-template.yaml> <kafka-user> <kafka-user-pass> <c3-user> <c3-user-pass>
@@ -20,8 +20,23 @@ This script creates the namespace, and installs the operator within the namespac
 `
 oc apply -f deployed-config-template.yaml
 `
-  
-  
+
+## licensed version
+Before running the `oc apply` command update your operator with your license text.
+
+`
+helm upgrade --install cfk-operator confluentinc/confluent-for-kubernetes --set licenseKey=<CFK license key>
+`
+
+After the operator is updated, use the "licensed version of the template" to generate the deployment.
+If the deployment was already generated, you can edit all the components in the yaml and add
+```
+spec:
+  license:
+    globalLicense: true
+```
+and re-apply the deployment.
+ 
 ## removing
 `
 ./remove-kafka-deployment.sh <namespace>
