@@ -12,7 +12,7 @@ then
     exit 1
 fi
 
-components="kafka connect replicator schemaregistry ksqldb controlcenter zookeeper"
+components="kafka connect replicator schemaregistry ksqldb controlcenter zookeeper proxy"
 
 # Change to certs directory
 if [ ! -d certs ]
