@@ -50,7 +50,10 @@ fi
 
 # Create a PKCS12 keystore with the CA cert
 echo Creating keystore
-keytool -keystore confluent-$namespace.p12 -storetype PKCS12 -import -file ./certs/confluentCA.pem -storepass password -noprompt
+#keytool -keystore confluent-$namespace.p12 -storetype PKCS12 -import -file ./certs/confluentCA.pem -storepass password -noprompt
+openssl pkcs12 -export -in ./certs/confluentCA.pem -inkey ./certs/confluentCA-key.pem -out confluent-$namespace.p12 -name confluent -passout pass:password
+# openssl pkcs12 -in nitin.p12 -out nitin.pem -nodes -nocerts -passin pass:password # for key
+# openssl pkcs12 -in nitin.p12 -out nitin.pem -nodes -nokeys -passin pass:password # for cert
 keytool -keystore k-truststore.jks -storetype jks -import -file ./certs/confluentCA.pem -storepass password -noprompt
 
 # Run the create-secrets script
