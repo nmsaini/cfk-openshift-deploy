@@ -103,4 +103,8 @@ oc create secret generic c3-sr \
 oc create secret generic metric-credentials \
     --from-file=plain.txt=temp/metric-cred.txt
 
+# creds for proxy
+oc create secret generic proxy-users \
+    --from-file=basic.txt=temp/kafka-roles.txt
+
 rm -rf temp
