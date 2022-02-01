@@ -33,6 +33,7 @@ secrets="zookeeper-listener \
     c3-connect \
     c3-ksql \
     c3-sr \
+    proxy-users \
     metric-credentials \
     kafka-tls \
     connect-tls \
@@ -40,7 +41,8 @@ secrets="zookeeper-listener \
     schemaregistry-tls \
     ksqldb-tls \
     controlcenter-tls \
-    zookeeper-tls"
+    zookeeper-tls \
+    proxy-tls"
 
 for secret in $secrets
 do
