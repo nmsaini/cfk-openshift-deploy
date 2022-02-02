@@ -33,6 +33,9 @@ then
     # Root cert
     openssl req -x509  -new -nodes -key confluentCA-key.pem -days 3650 -out confluentCA.pem -subj "$ROOT_CERT_SUBJ"
 
+    # create tls ca-pair-sslcerts for autoGenerateCerts
+    oc create secret tls ca-pair-sslcerts --cert confluentCA.pem --key confluentCA-key.pem -n namespace
+
     for component in $components
     do
         # Server key

@@ -42,7 +42,8 @@ secrets="zookeeper-listener \
     ksqldb-tls \
     controlcenter-tls \
     zookeeper-tls \
-    proxy-tls"
+    proxy-tls \
+    ca-pair-sslcerts"
 
 for secret in $secrets
 do
