@@ -43,6 +43,7 @@ secrets="zookeeper-listener \
     controlcenter-tls \
     zookeeper-tls \
     proxy-tls \
+    proxy-sr \
     ca-pair-sslcerts"
 
 for secret in $secrets
