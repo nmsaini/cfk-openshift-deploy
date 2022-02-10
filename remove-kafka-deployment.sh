@@ -17,6 +17,7 @@ oc delete KsqlDB.platform.confluent.io ksqldb
 oc delete Connect.platform.confluent.io connect
 oc delete Kafka.platform.confluent.io kafka
 oc delete Zookeeper.platform.confluent.io zookeeper
+oc delete KafkaRestProxies.platform.confluent.io restproxy
 
 helm delete cfk-operator
 
