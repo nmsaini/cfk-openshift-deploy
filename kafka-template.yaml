@@ -205,3 +205,42 @@ spec:
     type: basic
     basic:
       secretRef: c3-user
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: KafkaRestProxy
+metadata:
+  name: restproxy
+  namespace: cfk
+spec:
+  authentication:
+    basic:
+      secretRef: proxy-users
+    type: basic
+  externalAccess:
+    type: route
+    route:
+      domain: 
+  dependencies:
+    kafka:
+      bootstrapEndpoint: kafka:9071
+      authentication:
+        type: plain
+        jaasConfig:
+          secretRef: metric-credentials
+      tls:
+        enabled: true
+    schemaRegistry:
+      url: schemaregistry:8081
+      tls:
+        enabled: true
+      authentication:
+        type: basic
+        basic:
+          secretRef: proxy-sr
+  image:
+    application: confluentinc/cp-kafka-rest:7.0.1
+    init: confluentinc/confluent-init-container:2.2.1
+  replicas: 1
+  tls:
+    secretRef: proxy-tls
+
