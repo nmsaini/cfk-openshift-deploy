@@ -105,7 +105,7 @@ yq eval -i ".spec.listeners.external.externalAccess.route.domain = \"$domain\"" 
 # Change the kafka endpoint for the components and whilst we're there, update the 
 # domain for the external access if present. See security note in the README
 
-for component in ControlCenter SchemaRegistry Connect KsqlDB Kafka
+for component in ControlCenter SchemaRegistry Connect KsqlDB Kafka KafkaRestProxy
 do
     file="$component".yaml
     lowercaseComponent=$(echo $component | tr '[:upper:]' '[:lower:]')
@@ -119,7 +119,7 @@ do
 done
 
 # Set up the tls config with the certificates generated earlier
-for component in ControlCenter SchemaRegistry Connect KsqlDB Zookeeper Kafka
+for component in ControlCenter SchemaRegistry Connect KsqlDB Zookeeper Kafka KafkaRestProxy
 do
     file="$component".yaml
     lowercaseComponent=$(echo $component | tr '[:upper:]' '[:lower:]')
@@ -148,6 +148,12 @@ then
     then
         yq eval -i ".spec.dependencies.ksqldb.[0].url = \"https://ksqldb.$namespace.svc.cluster.local:8088\"" ControlCenter.yaml
     fi
+fi
+
+# check for restproxy
+if [ -e KafkaRestProxy.yaml ]
+then
+         yq eval -i ".spec.dependencies.schemaRegistry.url = \"https://schemaregistry.$namespace.svc.cluster.local:8081\"" KafkaRestProxy.yaml
 fi
 
 echo Adding basic auth to Schema Registry
