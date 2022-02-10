@@ -43,7 +43,7 @@ secrets="zookeeper-listener \
     ksqldb-tls \
     controlcenter-tls \
     zookeeper-tls \
-    proxy-tls \
+    kafkarestproxy-tls \
     proxy-sr \
     ca-pair-sslcerts"
 
