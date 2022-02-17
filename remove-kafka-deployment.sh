@@ -11,13 +11,13 @@ fi
 oc project $namespace
 
 # remove all components
-oc delete SchemaRegistry.platform.confluent.io schemaregistry
+oc delete KafkaRestProxies.platform.confluent.io restproxy
 oc delete ControlCenter.platform.confluent.io controlcenter
-oc delete KsqlDB.platform.confluent.io ksqldb
 oc delete Connect.platform.confluent.io connect
+oc delete KsqlDB.platform.confluent.io ksqldb
+oc delete SchemaRegistry.platform.confluent.io schemaregistry
 oc delete Kafka.platform.confluent.io kafka
 oc delete Zookeeper.platform.confluent.io zookeeper
-oc delete KafkaRestProxies.platform.confluent.io restproxy
 
 helm delete cfk-operator
 
