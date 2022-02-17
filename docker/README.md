@@ -32,7 +32,23 @@ To build the image all we need is a Dockerfile which is in our current directory
 ```
 oc start-build plugin-downloader --from-dir . --follow
 ```
-If everything goes well there should be a running POD with the web-server running in the namespace. Now all that is needed is a service to be exposed so other pods can get to the web-server.
+If everything goes well there should be a running POD with the web-server running in the namespace. Now all that is needed is a service to be exposed so other pods can get to the web-server. Our nginx is running on Port 8080 so that is the one we need to expose.
 ```
 oc expose deployment plugin-downloader --port 8080
 ```
+
+## Step 7. Point your connect yaml to download zips from plugin-downloader service
+Edit your yaml such that your connector plugins can be downloaded from your local url.
+Here is a snippet of your connect yaml
+```
+  build:
+    type: onDemand
+    onDemand:
+      plugins:
+        locationType: url
+        url:
+          - name: kafka-connect-jdbc
+            archivePath: http://plugin-downloader:8080/confluentinc-kafka-connect-jdbc-10.3.2.zip
+            checksum: ff1516edbe99f259973855ac90467c9273b4
+```
+The checksum should be the value from the hash.txt file that was generated.
