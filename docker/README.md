@@ -71,4 +71,4 @@ curl $(oc get route plugin-downloader -ojsonpath="{.spec.host}")
 
 Remember 💣 - you cannot mix `locationType: confluentHub` and `locationType: url` in the same Connect CR! You can either have one or the other but not both.
 
-**If you ever change the zips versions etc simply re-run Step 6**
+*If you ever change the zips versions etc simply re-run Step 6*
