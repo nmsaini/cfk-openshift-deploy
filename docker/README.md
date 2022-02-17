@@ -53,3 +53,5 @@ Here is a snippet of your connect yaml
 ```
 The checksum should be the value from the hash.txt file that was generated.
 If you are running this app in a different namespace, you can change the url to `http://plugin-downloader.*namespace*.svc:8080/...`
+
+Remember 💣 - you cannot mix locationType: confluentHub and locationType: url in the same Connect CR! You can either have one or the other but not both.
