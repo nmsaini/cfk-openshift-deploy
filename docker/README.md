@@ -52,3 +52,4 @@ Here is a snippet of your connect yaml
             checksum: ff1516edbe99f259973855ac90467c9273b4
 ```
 The checksum should be the value from the hash.txt file that was generated.
+If you are running this app in a different namespace, you can change the url to `http://plugin-downloader.*namespace*.svc:8080/...`
