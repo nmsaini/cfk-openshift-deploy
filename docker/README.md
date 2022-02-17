@@ -1,3 +1,7 @@
+## Prerequistes for running the script
+  - zip
+  - unzip
+
 In order to build the connect CR, at times you will need customer jars added to the connectors. 
 These jars can be hosted on a local/remote website from where "Connect pod" can download the connectors during the "init" phase.
 If you don't have a website (public url), here are instructions on building your own Docker Image that could be run inside the same namespace or same K8s env.
