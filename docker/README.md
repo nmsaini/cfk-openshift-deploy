@@ -2,9 +2,9 @@
   - zip
   - unzip
 
-In order to build the connect CR, at times you will need customer jars added to the connectors. 
-These jars can be hosted on a local/remote website from where "Connect pod" can download the connectors during the "init" phase.
-If you don't have a website (public url), here are instructions on building your own Docker Image that could be run inside the same namespace or same K8s env.
+In order to build the connect CR, at times you will need custom jars added to the connectors. 
+These plugin zips can be hosted on a local/remote website from where "Connect pod" can download the connectors during the "init" phase.
+If you don't have a website (public url), here are instructions on building your own Docker Image that could be run inside your openshift cluster.
 
 ## Step 1. Download connector plugins from Confluent hub
 go to https://www.confluent.io/hub/ and download the connector zip to your local folder (preferrable in a diff dir than this project).
