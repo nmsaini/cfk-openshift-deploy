@@ -36,12 +36,15 @@ To build the image all we need is a Dockerfile which is in our current directory
 ```
 oc start-build plugin-downloader --from-dir . --follow
 ```
-If everything goes well there should be a running POD with the web-server running in the namespace. Now all that is needed is a service to be exposed so other pods can get to the web-server. Our nginx is running on Port 8080 so that is the one we need to expose.
+If everything goes well there should be a running POD with the web-server running in the namespace. 
+
+## Step 7. Need to expose the web-server so it is reachable via a service
+Now all that is needed is a service to be exposed so other pods can get to the web-server. Our nginx is running on Port 8080 so that is the one we need to expose.
 ```
 oc expose deployment plugin-downloader --port 8080
 ```
 
-## Step 7. Point your connect yaml to download zips from plugin-downloader service
+## Step 8. Point your connect yaml to download zips from plugin-downloader service
 Edit your yaml such that your connector plugins can be downloaded from your local url.
 Here is a snippet of your connect yaml
 ```
@@ -56,6 +59,16 @@ Here is a snippet of your connect yaml
             checksum: ff1516edbe99f259973855ac90467c9273b4
 ```
 The checksum should be the value from the hash.txt file that was generated.
-If you are running this app in a different namespace, you can change the url to `http://plugin-downloader.*namespace*.svc:8080/...`
+If you are running this app in a different namespace, you can change the url to `http://plugin-downloader.*namespace*.svc:8080/...` or if you want to 
+expose to outside cluster simply
+```
+oc expose svc/plugin-downloader
+```
+verify
+```
+curl $(oc get route plugin-downloader -ojsonpath="{.spec.host}")
+```
 
 Remember 💣 - you cannot mix `locationType: confluentHub` and `locationType: url` in the same Connect CR! You can either have one or the other but not both.
+
+**If you ever change the zips versions etc simply re-run Step 6**
