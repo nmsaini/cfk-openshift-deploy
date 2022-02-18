@@ -60,7 +60,7 @@ Here is a snippet of your connect CR yaml (see archivePath element).
 ```
 The checksum should be the value from the hash.txt file that was generated.
 If you are running this app in a different namespace, you can change the url to `http://plugin-downloader.*namespace*.svc:8080/...` or if you want to 
-expose to outside cluster simply
+connect from outside the cluster simply expose the service as a route like 
 ```
 oc expose svc/plugin-downloader
 ```
