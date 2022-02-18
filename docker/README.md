@@ -45,8 +45,8 @@ oc expose deployment plugin-downloader --port 8080
 ```
 
 ## Step 8. Point your connect yaml to download zips from plugin-downloader service
-Edit your yaml such that your connector plugins can be downloaded from your local url.
-Here is a snippet of your connect yaml
+Edit your Connect CR yaml such that your connector plugins can be downloaded from your local web-server url.
+Here is a snippet of your connect CR yaml (see archivePath element).
 ```
   build:
     type: onDemand
