@@ -7,7 +7,7 @@ These plugin zips can be hosted on a local/remote website from where "Connect po
 If you don't have a website (public url), here are instructions on building your own Docker Image that could be run inside your openshift cluster.
 
 ## Step 1. Download connector plugins from Confluent hub
-go to https://www.confluent.io/hub/ and download the connector zip to your local folder (preferrable in a diff dir than this project).
+go to https://www.confluent.io/hub/ and download the connector zip to your local folder (preferrable in a diff folder than this project).
 
 ## Step 2. Create a lib folder for the additional jars that are needed (custom jars)
 create a folder in the same folder as the zip file. Name this folder as ${zip}.lib (where ${zip} is the zip name downloaded)
