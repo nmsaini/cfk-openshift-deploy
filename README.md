@@ -28,14 +28,17 @@ Before running the `oc apply` command update your operator with your license tex
 helm upgrade --install cfk-operator confluentinc/confluent-for-kubernetes --set licenseKey=<CFK license key>
 `
 
-After the operator is updated, use the "licensed version of the template" to generate the deployment.
-If the deployment was already generated, you can edit all the components in the yaml and add
+After the operator is updated, you can edit all the components in the yaml and add
 ```
 spec:
   license:
     globalLicense: true
 ```
 and re-apply the deployment.
+
+```
+cat deployed-kafka-template.yaml | yq e ".spec.license.globalLicense=true" - | oc apply -f -
+```
  
 ## removing
 `
