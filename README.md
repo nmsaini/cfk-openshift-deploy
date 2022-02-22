@@ -43,6 +43,7 @@ cat deployed-kafka-template.yaml | yq e ".spec.license.globalLicense=true" - | o
 if you want to keep a copy of the deployment yaml. Just pipe it into a file and save it
 ```
 cat deployed-kafka-template.yaml | yq e ".spec.license.globalLicense=true" - > deployed-kafka-template-lic.yaml
+
 oc apply -f deployed-kafka-template-lic.yaml
 ```
 
