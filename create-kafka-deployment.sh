@@ -19,8 +19,9 @@ then
 fi
 
 # Copy config file to new file to avoid corrupting the old one
-cp $filename deployed-$filename
-filename=deployed-$filename
+DEPLOYED_FILE=deployed-$(date +"%Y%m%d")-$filename
+cp $filename $DEPLOYED_FILE
+filename=$DEPLOYED_FILE
 
 # Create and configure namespace
 echo Creating and configuring namespace
