@@ -30,11 +30,12 @@ secrets="zookeeper-listener \
     connect-listener \
     ksql-listener \
     sr-listener \
-    c3-user \
+    c3-listener \
     c3-connect \
     c3-ksql \
+    c3-kafka \
     c3-sr \
-    proxy-users \
+    proxy-listener \
     metric-credentials \
     kafka-tls \
     connect-tls \
@@ -44,6 +45,7 @@ secrets="zookeeper-listener \
     controlcenter-tls \
     zookeeper-tls \
     kafkarestproxy-tls \
+    proxy-kafka \
     proxy-sr \
     ca-pair-sslcerts"
 

@@ -84,7 +84,7 @@ oc create secret generic sr-listener \
 # Control Center
 
 # User login for C3
-oc create secret generic c3-user \
+oc create secret generic c3-listener \
     --from-file=basic.txt=temp/c3-user.txt 
 
 # C3 -> Connect
@@ -99,13 +99,21 @@ oc create secret generic c3-ksql \
 oc create secret generic c3-sr \
     --from-file=basic.txt=temp/kafka-plain.txt
 
+# C3 -> KAFKA
+oc create secret generic c3-kafka \
+    --from-file=basic.txt=temp/kafka-plain.txt
+
 # Credentials for the metric reporter
 oc create secret generic metric-credentials \
     --from-file=plain.txt=temp/metric-cred.txt
 
 # creds for proxy
-oc create secret generic proxy-users \
+oc create secret generic proxy-listener \
     --from-file=basic.txt=temp/kafka-roles.txt
+
+# proxy -> KAFKA
+oc create secret generic proxy-kafka \
+    --from-file=basic.txt=temp/kafka-plain.txt
 
 # proxy -> sr
 oc create secret generic proxy-sr \
