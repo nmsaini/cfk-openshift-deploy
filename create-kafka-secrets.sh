@@ -113,7 +113,7 @@ oc create secret generic proxy-listener \
 
 # proxy -> KAFKA
 oc create secret generic proxy-kafka \
-    --from-file=basic.txt=temp/kafka-plain.txt
+    --from-file=plain.txt=temp/kafka-plain.txt
 
 # proxy -> sr
 oc create secret generic proxy-sr \
