@@ -101,7 +101,7 @@ oc create secret generic c3-sr \
 
 # C3 -> KAFKA
 oc create secret generic c3-kafka \
-    --from-file=basic.txt=temp/kafka-plain.txt
+    --from-file=plain.txt=temp/kafka-plain.txt
 
 # Credentials for the metric reporter
 oc create secret generic metric-credentials \
