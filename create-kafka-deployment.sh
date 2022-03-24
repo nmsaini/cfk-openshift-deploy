@@ -106,7 +106,8 @@ yq eval -i ".spec.listeners.external.externalAccess.route.domain = \"$domain\"" 
 # Change the kafka endpoint for the components and whilst we're there, update the 
 # domain for the external access if present. See security note in the README
 
-for component in ControlCenter SchemaRegistry Connect KsqlDB Kafka KafkaRestProxy
+#for component in ControlCenter SchemaRegistry Connect KsqlDB Kafka KafkaRestProxy
+for component in ControlCenter SchemaRegistry Connect KsqlDB KafkaRestProxy
 do
     file="$component".yaml
     lowercaseComponent=$(echo $component | tr '[:upper:]' '[:lower:]')
@@ -151,18 +152,24 @@ then
     fi
 fi
 
-# check for restproxy
-if [ -e KafkaRestProxy.yaml ]
-then
-         yq eval -i ".spec.dependencies.schemaRegistry.url = \"https://schemaregistry.$namespace.svc.cluster.local:8081\"" KafkaRestProxy.yaml
-fi
-
 echo Adding basic auth to Schema Registry
 # Add basic auth to the schema registry and the dependency in C3, but not the others as it's not yet supported
 yq eval -i ".spec.authentication.type = \"basic\"" SchemaRegistry.yaml
 yq eval -i ".spec.authentication.basic.secretRef = \"sr-listener\"" SchemaRegistry.yaml
-yq eval -i ".spec.dependencies.schemaRegistry.authentication.type = \"basic\"" ControlCenter.yaml
-yq eval -i ".spec.dependencies.schemaRegistry.authentication.basic.secretRef = \"c3-sr\"" ControlCenter.yaml
+
+for component in ControlCenter Kafka KsqlDB KafkaRestProxy
+do
+    file="$component".yaml
+    lowercaseComponent=$(echo $component | tr '[:upper:]' '[:lower:]')
+
+    if [ -e $file ]
+    then
+    # add schema-registry auth
+        yq eval -i ".spec.dependencies.schemaRegistry.url = \"https://schemaregistry.$namespace.svc.cluster.local:8081\"" $file
+        yq eval -i ".spec.dependencies.schemaRegistry.authentication.type = \"basic\"" $file
+        yq eval -i ".spec.dependencies.schemaRegistry.authentication.basic.secretRef = \"$lowercaseComponent-sr\"" $file
+    fi
+done
 
 echo Creating final YAML file
 # Replace the namespace element in each file and then cat them to the temp file

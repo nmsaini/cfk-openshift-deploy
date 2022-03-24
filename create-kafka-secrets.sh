@@ -115,8 +115,20 @@ oc create secret generic proxy-listener \
 oc create secret generic proxy-kafka \
     --from-file=plain.txt=temp/kafka-plain.txt
 
+# c3 -> sr
+oc create secret generic controlcenter-sr \
+    --from-file=basic.txt=temp/kafka-plain.txt
+
+# kafka -> sr
+oc create secret generic kafka-sr \
+    --from-file=basic.txt=temp/kafka-plain.txt
+
+# ksqldb -> sr
+oc create secret generic ksqldb-sr \
+    --from-file=basic.txt=temp/kafka-plain.txt
+
 # proxy -> sr
-oc create secret generic proxy-sr \
+oc create secret generic kafkarestproxy-sr \
     --from-file=basic.txt=temp/kafka-plain.txt
 
 rm -rf temp
