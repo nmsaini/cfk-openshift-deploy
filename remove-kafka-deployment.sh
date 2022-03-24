@@ -46,7 +46,10 @@ secrets="zookeeper-listener \
     zookeeper-tls \
     kafkarestproxy-tls \
     proxy-kafka \
-    proxy-sr \
+    kafkarestproxy-sr \
+    controlcenter-sr \
+    kafka-sr \
+    ksqldb-sr \
     ca-pair-sslcerts"
 
 for secret in $secrets
