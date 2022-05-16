@@ -149,6 +149,7 @@ then
     if [ -e KsqlDB.yaml ]
     then
         yq eval -i ".spec.dependencies.ksqldb.[0].url = \"https://ksqldb.$namespace.svc.cluster.local:8088\"" ControlCenter.yaml
+        yq eval -i ".spec.dependencies.ksqldb.[0].advertisedUrl: = \"https://ksqldb.$domain:443\"" ControlCenter.yaml
     fi
 fi
 
