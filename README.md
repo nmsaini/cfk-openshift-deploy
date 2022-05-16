@@ -21,6 +21,27 @@ This script creates the namespace, and installs the operator within the namespac
 oc apply -f deployed-config-template.yaml
 `
 
+## deploying a specific version of the operator
+
+The create-kafka-deployment script deploys the latest version of the helm chart available in the repo. However, if there is a need to install a specific version of the chart after adding the repo, you can install a specific version of the release.
+
+Adding the repo by issuing the following command
+```
+helm repo add confluentinc https://packages.confluent.io/helm
+```
+
+Now you can list the available versions by running
+```
+helm search repo cfk -l
+```
+
+Then picking a specific version to install by issuing
+```
+helm upgrade --install cfk-operator confluentinc/confluent-for-kubernetes --version 0.304.17
+```
+
+> remember it is Chart Version you are installing and not the App Version
+
 ## licensed version
 Before running the `oc apply` command update your operator with your license text.
 
