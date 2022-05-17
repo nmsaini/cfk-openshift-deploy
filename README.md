@@ -99,4 +99,4 @@ yum install java-1.8.0-openjdk -y
 VER=4.23.1 BIN=yq_linux_amd64;wget https://github.com/mikefarah/yq/releases/download/v${VER}/${BIN} -O /usr/bin/yq && chmod +x /usr/bin/yq
 ```
 
-/chg0317
+/chg0517
