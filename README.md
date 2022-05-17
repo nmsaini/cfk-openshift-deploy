@@ -32,7 +32,7 @@ helm repo add confluentinc https://packages.confluent.io/helm
 
 Now you can list the available versions by running
 ```
-helm search repo cfk -l
+helm search repo confluentinc -l
 ```
 
 Then picking a specific version to install by issuing
