@@ -34,7 +34,7 @@ while IFS= read -r line; do
     chaincmd="$chaincmd | ./set-cr-value-using-yq.sh $line"
 done < final-changes.properties
 
-eval "$chaincmd" > deployed-edited-$(date +"%Y%m%d").yaml
+eval "$chaincmd" > deployed-edited-$(date +"%Y%m%d-%H%M%S").yaml
 
 ```
 
