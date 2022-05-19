@@ -25,4 +25,15 @@ eval "$chaincmd"
 This will output the new yaml on your stdout.
 You can pipe that into a new yaml.
 
+```
+chaincmd="cat deployed-file.yaml"
+
+while IFS= read -r line; do
+    chaincmd="$chaincmd | ./set-cr-value-using-yq.sh $line"
+done < final-changes.properties
+
+eval "$chaincmd" > deployed-edited-$(date +"%Y%m%d").yaml
+
+```
+
 /chg0519
