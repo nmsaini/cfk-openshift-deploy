@@ -6,6 +6,7 @@ echo \
 "Kafka .spec.oneReplicaPerNode=true
 Zookeeper .spec.oneReplicaPerNode=true" \
 > final-changes.properties
+
 ```
 
 Now chain all these changes to the original file in one go using set-cr-value-using-yq.sh.
@@ -18,6 +19,7 @@ while IFS= read -r line; do
 done < final-changes.properties
 
 eval "$chaincmd"
+
 ```
 
 This will output the new yaml on your stdout.
