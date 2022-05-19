@@ -7,7 +7,8 @@ of these in the properties file as follows:
 ```
 echo \
 "Kafka .spec.oneReplicaPerNode=true
-Zookeeper .spec.oneReplicaPerNode=true" \
+Zookeeper .spec.oneReplicaPerNode=true
+Zookeeper .spec.logVolumeCapacity=\\\"25Gi\\\"" \
 > final-changes.properties
 
 ```
