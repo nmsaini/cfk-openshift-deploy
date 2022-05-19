@@ -29,7 +29,7 @@ This will output the new yaml on your stdout.
 You can pipe that into a new yaml.
 
 ```
-chaincmd="cat deployed-file.yaml"
+chaincmd="cat deployed-*-kafka-template.yaml"
 
 while IFS= read -r line; do
     chaincmd="$chaincmd | ./set-cr-value-using-yq.sh $line"
