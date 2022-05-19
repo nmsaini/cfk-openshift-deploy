@@ -1,6 +1,8 @@
 ## Applying multiple YQ style inserts to the final yaml
 
-create a properties file to keep track of all the changes needed
+You can certainly chain multiple YQ inserts on the command line using the set-cr-value-using-yq.sh script. 
+However, they get cumbersome after retyping a few times. It is much easier to track these in a properties 
+file and (re)applied multiple times. Store your CR and YQ-change on a single line as follows:
 ```
 echo \
 "Kafka .spec.oneReplicaPerNode=true
