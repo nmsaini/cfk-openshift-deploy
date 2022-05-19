@@ -84,7 +84,7 @@ done
 cd $ZIPFOLDER && sha512sum *.zip > hash.txt
 
 # generate yaml snippet
-PYAML=plugin-snippet.yaml
+PYAML=plugin-snippet-yaml.txt
 # zero out
 echo "" > $PYAML
 for file in *.zip
