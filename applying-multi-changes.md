@@ -2,10 +2,10 @@
 
 create a properties file to keep track of all the changes needed
 ```
-echo "
-Kafka .spec.oneReplicaPerNode=true
-Zookeeper .spec.oneReplicaPerNode=true
-" > final-changes.properties
+echo \
+"Kafka .spec.oneReplicaPerNode=true
+Zookeeper .spec.oneReplicaPerNode=true" \
+> final-changes.properties
 ```
 
 Now chain all these changes to the original file in one go using set-cr-value-using-yq.sh.
