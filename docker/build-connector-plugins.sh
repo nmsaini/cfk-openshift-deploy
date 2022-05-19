@@ -90,8 +90,9 @@ echo "" > $PYAML
 for file in *.zip
 do
         zip=$(basename $(echo ${file%.*})|cut -f2-4 -d-)
-        echo "- name: $zip" >> $PYAML
-        echo "  archivePath: http://plugin-downloader:8080/"$(basename $file) >> $PYAML
-        echo "  checksum: "$(sha512sum $file|cut -f1 -d ' ') >> $PYAML
+	echo "url:"
+        echo "  - name: $zip" >> $PYAML
+        echo "    archivePath: http://plugin-downloader:8080/"$(basename $file) >> $PYAML
+        echo "    checksum: "$(sha512sum $file|cut -f1 -d ' ') >> $PYAML
 done
 
