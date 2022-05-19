@@ -11,7 +11,7 @@ Zookeeper .spec.oneReplicaPerNode=true" \
 
 ```
 
-Now chain all these changes to the original file in one go using set-cr-value-using-yq.sh.
+Now chain all these changes to the original yaml file in one go using set-cr-value-using-yq.sh.
 
 ```
 chaincmd="cat deployed-file.yaml"
