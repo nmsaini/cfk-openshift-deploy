@@ -11,7 +11,7 @@ Zookeeper .spec.oneReplicaPerNode=true
 Now chain all these changes to the original file in one go using set-cr-value-using-yq.sh.
 
 ```
-chaincmd="/usr/bin/cat deployed-file.yaml"
+chaincmd="cat deployed-file.yaml"
 
 while IFS= read -r line; do
     chaincmd="$chaincmd | ./set-cr-value-using-yq.sh $line"
