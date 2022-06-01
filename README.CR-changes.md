@@ -19,7 +19,10 @@ Now chain all these changes to the original yaml file in one go using set-cr-val
 chaincmd="cat deployed-*-kafka-template.yaml"
 
 while IFS= read -r line; do
+  if [ ! -z "$line" ]
+  then
     chaincmd="$chaincmd | ./set-cr-value-using-yq.sh $line"
+  fi
 done < final-changes.properties
 
 eval "$chaincmd"
@@ -33,7 +36,10 @@ You can pipe that into a new yaml.
 chaincmd="cat deployed-*-kafka-template.yaml"
 
 while IFS= read -r line; do
+  if [ ! -z "$line" ]
+  then
     chaincmd="$chaincmd | ./set-cr-value-using-yq.sh $line"
+  fi
 done < final-changes.properties
 
 eval "$chaincmd" > deployed-final-changed-$(date +"%Y%m%d-%H%M%S").yaml
