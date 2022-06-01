@@ -8,7 +8,12 @@ of these in the properties file as follows:
 echo \
 "Kafka .spec.oneReplicaPerNode=true
 Zookeeper .spec.oneReplicaPerNode=true
-Zookeeper .spec.logVolumeCapacity=\\\"25Gi\\\"" \
+Zookeeper .spec.logVolumeCapacity=\\\"25Gi\\\"
+Zookeeper .spec.podTemplate.affinity.podAntiAffinity.requiredDuringSchedulingIgnoredDuringExecution.[0].labelSelector.matchExpressions.[0].key=\"app\"
+Zookeeper .spec.podTemplate.affinity.podAntiAffinity.requiredDuringSchedulingIgnoredDuringExecution.[0].labelSelector.matchExpressions.[0].operator=\"In\"
+Zookeeper .spec.podTemplate.affinity.podAntiAffinity.requiredDuringSchedulingIgnoredDuringExecution.[0].labelSelector.matchExpressions.[0].values.[0]=\"connect\"
+Zookeeper .spec.podTemplate.affinity.podAntiAffinity.requiredDuringSchedulingIgnoredDuringExecution.[0].topologyKey=\"kubernetes.io/hostname\"
+" \
 > final-changes.properties
 
 ```
