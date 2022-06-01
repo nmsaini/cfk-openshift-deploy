@@ -46,4 +46,4 @@ eval "$chaincmd" > deployed-final-changed-$(date +"%Y%m%d-%H%M%S").yaml
 
 ```
 
-/chg0519
+/chg0601
